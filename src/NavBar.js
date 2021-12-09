@@ -10,6 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 import Stack from '@mui/material/Stack';
 
@@ -19,9 +20,10 @@ import Stack from '@mui/material/Stack';
 const NavBar = () => {
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <Link style={{textDecoration: "none", color:"White"}} to="/" >
           <Typography
             variant="h4"
             noWrap
@@ -30,10 +32,10 @@ const NavBar = () => {
           >
             Workout Creator!
           </Typography>
+          </Link>
           <Stack direction="row" spacing={2}>
-      <Button sx={{borderColor: "white", color: "white" }} variant="outlined">Create a workout!</Button>
-      <Button sx={{borderColor: "white", color: "white" }} variant="outlined">View Created</Button>
-      <Button sx={{borderColor: "white", color: "white" }} variant="outlined">Exercise List</Button>
+      <Link style={{textDecoration: "none"}} to="/routinelist" ><Button sx={{borderColor: "white", color: "white" }} variant="outlined">View and Create Workout Routines</Button></Link>
+      <Link style={{textDecoration: 'none'}} to="/exerciselist"><Button sx={{borderColor: "white", color: "white" }} variant="outlined">Exercise List</Button></Link>
 
     
     </Stack>

@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import ExerciseContainer from './ExerciseContainer';
+import RoutineContainer from './RoutineContainer'
+import MainPage from './MainPage'
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+     <Route path="/" element={<App />} />
+     <Route path="/exerciselist" element={<ExerciseContainer/>} />
+     <Route path="/routinelist" element={<RoutineContainer/>}/>
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
