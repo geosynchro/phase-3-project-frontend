@@ -4,7 +4,7 @@ import App from './App';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import ExerciseContainer from './ExerciseContainer';
 import RoutineContainer from './RoutineContainer'
-import MainPage from './MainPage'
+
 
 
 ReactDOM.render(

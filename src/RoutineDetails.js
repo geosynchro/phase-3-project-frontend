@@ -1,19 +1,20 @@
 import ExerciseDetails from "./ExerciseDetails"
-import AddRoutine from "./AddRoutine"
-import { Info } from "@material-ui/icons"
+import AddExercise from "./AddExercise"
 
-function RoutineDetails({routineDet}){
+
+function RoutineDetails({routineDet, exercises, handleDelete}){
     const exerciseInfo = routineDet.exercise_routines
-    console.log(exerciseInfo)
-    // const allExercises = exerciseInfo.map(info => <ExerciseDetails name={info.exercise.name} duration/>)
-    // const allExercises = exerciseInfo.each(exercise => <ExerciseDetails name={exercise.exercise.name} duration={exercise.duration} reps={exercise.reps} weight={exercise.weight}/>)
-    // const allExercises = routineDet.exercises.each(exercise => <p>{exercise.name}</p>)
+    const allExercises = exerciseInfo?.map(info => <ExerciseDetails handleDelete={handleDelete} key={info.id} id={info.id} name={info.exercise.name} duration={info.duration} reps={info.reps} weight={info.weight}/>)
+
     return(
         <div style={{textAlign:"center", border:"solid blue", borderRadius:"5px"}}>
-            <h1 style={{textAlign:"center"}}>Routine Name: {routineDet.name}</h1>
+            <h2 style={{textAlign:"center"}}>Routine Name: {routineDet.name}</h2>
             <h3>Day of the week: {routineDet.days_of_week}</h3>
             <div>
-                {/* {allExercises} */}
+                {allExercises}
+            </div>
+            <div>
+                <AddExercise exercises = {exercises} routineDet={routineDet}/>
             </div>
         </div>
         

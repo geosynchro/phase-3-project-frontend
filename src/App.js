@@ -1,11 +1,6 @@
-import MainPage from "./MainPage";
+
 import NavBar from "./NavBar";
-import ExerciseList from "./ExerciseList";
-import {Fragment, useEffect, useState} from 'react'
-import { Routes, Route } from "react-router-dom"
-import { Switch } from "react-router-dom"
-import ExerciseContainer from "./ExerciseContainer";
-import RoutineContainer from "./RoutineContainer"
+
 
 function App() {
   
