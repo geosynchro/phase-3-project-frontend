@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 function RoutineDetails({routineDet, exercises, handleDelete, exRoutines, setExRoutines, setRoutineDet}){
     const [routineExercises, setRoutineExercises] = useState([])
-    
+    console.log(routineDet)
 
     useEffect(() => {
         const exerciseInfo = routineDet.exercise_routines
@@ -15,7 +15,7 @@ function RoutineDetails({routineDet, exercises, handleDelete, exRoutines, setExR
     let test = routineExercises
     // const exerciseInfo1 = routineDet.exercise_routines
     const allExercises = test?.map(info => <ExerciseDetails handleDelete={handleDelete} key={info.id} exerciseObj ={info} />)
-    console.log(test)
+    // console.log(test)
 
     // id={info.id} duration={info.duration} name={info.exercise.name} reps={info.reps} weight={info.weight}
 

@@ -40,7 +40,7 @@ function RoutineList ({ renderDetails} ){
             //     const updatedList = routines.filter((routine) => routine.id !== newRoutine.id)
             //     setRoutinesToDisplay(updatedList)
             // })
-            
+            // .then(r => console.log(r))
         }
 
     
