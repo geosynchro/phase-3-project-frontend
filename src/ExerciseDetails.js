@@ -1,11 +1,11 @@
 import Button from '@mui/material/Button';
 
-function ExerciseDetails({id, name, duration, reps, weight, handleDelete}){
-
+function ExerciseDetails({exerciseObj: {id, exercise, duration, reps, weight, handleDelete}}){
+    console.log(exercise)
     return(
         <div style={{border:"solid blue", borderRadius:"5px", textAlign:"center", margin:"5px"}}>
             <p style={{}}>
-                <strong>Exercise:</strong> {name}  
+                <strong>Exercise:</strong> {exercise.name}  
                 <span> <strong>|</strong> </span>  
                 <strong>Duration:</strong> {duration} mins
                 <span> <strong>|</strong> </span> 

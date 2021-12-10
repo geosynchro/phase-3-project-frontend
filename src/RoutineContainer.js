@@ -5,15 +5,17 @@ import AddRoutine from "./AddRoutine"
 import RoutineDetails from "./RoutineDetails"
 
 function RoutineContainer(){
-    const [routines, setRoutines] = useState([])
+    
     const [routineDet, setRoutineDet] = useState([])
     const [exercises, setExercises] = useState([])
     const [exRoutines, setExRoutines] = useState([])
+    
 
     useEffect(() => {
-        fetch('http://localhost:8282/routines')
-        .then(r => r.json())
-        .then(routinesArr => {setRoutines(routinesArr)})
+        // fetch('http://localhost:8282/routines')
+        // .then(r => r.json())
+        // .then(routinesArr => {setRoutines(routinesArr) 
+        //     setRoutinesToDisplay(routinesArr)})
 
         fetch('http://localhost:8282/exercises')
         .then(r => r.json())
@@ -31,55 +33,43 @@ function RoutineContainer(){
             headers:{'Content-type':'application/json'}
         })
         .then(res => res.json())
-        .then(res => setExRoutines(res))
+        .then(res => console.log(res))
     }  
 
-      function renderDetails(id ){
+      function renderDetails(id){
           fetch(`http://localhost:8282/routines/${id}`)
           .then(res => res.json())
           .then(routineObj => {setRoutineDet(routineObj)}) 
       }
 
-      const postRoutine = (routine) => {
-        fetch('http://localhost:8282/routines',{
-          method:'POST',
-          headers:{
-            'Content-Type':'application/json'
-          },
-          body: JSON.stringify(routine)
-        })
-        .then(res => res.json())
-        .then(newRoutine => {
-          setRoutines([newRoutine,...routines])
-        })
-      }
-
-      const deleteRoutine = (id) => {
-        fetch(`http://localhost:8282/routines/${id}`,{
-            method: 'DELETE',
-            headers:{'Content-type':'application/json'}
-        })
-        .then(res => res.json())
-        .then(r => console.log(r))
-        
-        fetch(`http://localhost:8282/routines`)
-        .then(res => res.json())
-        .then(routines => setRoutines(routines))
-      }
-
-    //   const postRoutine = (exercise) => {
-    //     fetch('http://localhost:8282/exerciseroutines',{
+    //   const postRoutine = (routine) => {
+    //     fetch('http://localhost:8282/routines',{
     //       method:'POST',
     //       headers:{
     //         'Content-Type':'application/json'
     //       },
-    //       body: JSON.stringify(exercise)
+    //       body: JSON.stringify(routine)
     //     })
     //     .then(res => res.json())
     //     .then(newRoutine => {
-    //       setRoutines([newExRoutine,...routines])
+    //       setRoutinesToDisplay([newRoutine,...routines])
     //     })
     //   }
+
+    //   const deleteRoutine = (id) => {
+    //     fetch(`http://localhost:8282/routines/${id}`,{
+    //         method: 'DELETE',
+    //         headers:{'Content-type':'application/json'}
+    //     })
+    //     .then(res => res.json())
+    //     .then(newRoutine => {
+    //         const updatedList = routines.filter((routine) => routine.id !== newRoutine.id)
+    //         setRoutinesToDisplay(updatedList)
+    //     })
+    //   }
+
+      
+
 
     return(
        <div>
@@ -87,11 +77,11 @@ function RoutineContainer(){
             <div style={{display:"flex", marginLeft:"25px"}}>
                 <div>
                     <h1 style={{display:"flex", justifyContent:"center"}} >Routine List:</h1>     
-                    <div  style={{display:"flex", }}>
+                    {/* <div  style={{display:"flex", }}>
                      <AddRoutine postRoutine={postRoutine} />  
-                    </div>
+                    </div> */}
                     <div style={{display:'flex'}}> 
-                     <RoutineList  routines ={routines} renderDetails={renderDetails} deleteRoutine={deleteRoutine}/>
+                     <RoutineList renderDetails={renderDetails}/>
                     </div>
                 </div>
                 <div style={{minWidth:"50%", justifyContent:"center", marginLeft:"25px"}}>
@@ -99,7 +89,7 @@ function RoutineContainer(){
                         <h1 style={{textAlign:'center'}}>Routine Details:</h1>
                     </div>
                     <div>
-                        <RoutineDetails routineDet = {routineDet} exercises={exercises} handleDelete={handleDelete}/>
+                        <RoutineDetails routineDet = {routineDet} exercises={exercises} handleDelete={handleDelete}  exRoutines={exRoutines} setExRoutines={setExRoutines} setRoutineDet={setRoutineDet}/>
                     </div>
                 </div>
                 
